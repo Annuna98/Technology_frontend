@@ -32,61 +32,57 @@ class AddUser extends Component{
             });
     }
 
-    onChange = (e) =>
+    onChange = (e) =>{
         this.setState({[e.target.name]: e.target.value });
+        console.log(this.state);
+    }
+
 
     render() {
         return(
             <div>
+                <div className="menuAddForm">
                 <h2 className="text-center">Add User</h2>
                 <form>
                     <div className="form-group">
-                        <label>User name:</label>
                         <input type="text" placeholder="username" name="username" className="form-control" value={this.state.username} onChange={this.onChange}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Password:</label>
                         <input type="text" placeholder="password" name="password" className="form-control" value={this.state.password} onChange={this.onChange}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Name:</label>
                         <input type="text" placeholder="fname" name="fname" className="form-control" value={this.state.fname} onChange={this.onChange}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Surname:</label>
                         <input type="text" placeholder="surname" name="surname" className="form-control" value={this.state.surname} onChange={this.onChange}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Gender:</label>
                         <input type="text" placeholder="gender" name="gender" className="form-control" value={this.state.gender} onChange={this.onChange}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Weight:</label>
                         <input type="text" placeholder="weight" name="weight" className="form-control" value={this.state.weight} onChange={this.onChange}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Height:</label>
                         <input type="text" placeholder="height" name="height" className="form-control" value={this.state.height} onChange={this.onChange}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Age:</label>
                         <input type="text" placeholder="age" name="age" className="form-control" value={this.state.age} onChange={this.onChange}/>
                     </div>
 
                     <div className="form-group">
-                        <label>Desired weight:</label>
                         <input type="text" placeholder="desired_weight" name="desired_weight" className="form-control" value={this.state.desired_weight} onChange={this.onChange}/>
                     </div>
 
-                    <button className="btn btn-success" onClick={this.saveUser}>Save</button>
+                    <button className="btn btn-success" class="save" onClick={this.saveUser}><span>✓</span>Save</button>
                 </form>
+                </div>
             </div>
         );
     }

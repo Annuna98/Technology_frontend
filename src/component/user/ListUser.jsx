@@ -45,11 +45,15 @@ class ListUser extends Component{
         this.props.history.push('/add-user');
     }
 
+    calculateUser(id){
+        window.localStorage.setItem("userId", id);
+        this.props.history.push('/calculate-user');
+    }
+
     render() {
         return(
             <div>
                 <h2 className="text-center">User Details</h2>
-                <button className="btn btn-danger" onClick={() => this.addUser()}> Add User</button>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -68,6 +72,7 @@ class ListUser extends Component{
                             this.state.users.map(
                         user =>
                                     <tr key={user.id}>
+                                        <td>{user.id}</td>
                                         <td>{user.fname}</td>
                                         <td>{user.surname}</td>
                                         <td>{user.gender}</td>
@@ -78,6 +83,7 @@ class ListUser extends Component{
                                         <td>
                                             <button className="btn btn-success" onClick={() => this.deleteUser(user.id)}>Delete</button>
                                             <button className="btn btn-success" onClick={() => this.editUser(user.id)}>Edit</button>
+                                            <button onClick={() => this.calculateUser(user.id)}>Calculate</button>
                                         </td>
                                     </tr>
                             )
@@ -85,6 +91,8 @@ class ListUser extends Component{
                     </tbody>
 
                 </table>
+
+                <button className="btn btn-danger" onClick={() => this.addUser()}> Add User</button>
             </div>
         );
     }
