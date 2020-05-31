@@ -80,7 +80,7 @@ class AddUser extends Component{
                         <input type="text" placeholder="desired_weight" name="desired_weight" className="form-control" value={this.state.desired_weight} onChange={this.onChange}/>
                     </div>
 
-                    <button className="btn btn-success" class="save" onClick={this.saveUser}><span>✓</span>Save</button>
+                    <button  class="save" onClick={this.saveUser}><span>✓</span>Save</button>
                 </form>
                 </div>
             </div>

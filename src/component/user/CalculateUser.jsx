@@ -51,9 +51,7 @@ class CalculateUser extends Component{
         this.setState(next);
     }
 
-    handleChange(){
 
-    }
     calculateUser() {
         var BMR = 0;
         if (this.state.gender === "M"){
@@ -64,6 +62,7 @@ class CalculateUser extends Component{
         }
      //   alert(BMR);
        // return BMR;
+        BMR = Math.trunc(BMR);
        return this.setState((state) => {return {...state, BMR}});
     }
     render() {
@@ -107,9 +106,10 @@ class CalculateUser extends Component{
                         <input type="text" placeholder="desired_weight" name="desired_weight" className="form-control" value={this.state.desired_weight} />
                     </div>
 
-                    {<button className="btn btn-success" class="save" onClick={this.calculateUser}><span>✓</span>Calculate</button>}
+                    <button type="button"  className="save" onClick={this.calculateUser}><span>✓</span>Calculate</button>
                 </form>
                 <form>
+                    <a className="tef">Ваше суточное потребление калорий:</a>
                     <input disabled type="text"  name="username" className="form-control" value={this.state.BMR} />
                 </form>
 

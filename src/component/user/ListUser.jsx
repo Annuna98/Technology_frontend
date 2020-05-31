@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import ApiService from "../../service/ApiService";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
-class ListUser extends Component{
+
+class ListUser extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -29,7 +32,7 @@ class ListUser extends Component{
     deleteUser(userId) {
         ApiService.deleteUser(userId)
             .then(res => {
-                this.setState({message : 'User deleted successfully.'});
+                this.setState({message: 'User deleted successfully.'});
                 this.setState({users: this.state.users.filter(user => user.id !== userId)});
             })
 
@@ -45,17 +48,23 @@ class ListUser extends Component{
         this.props.history.push('/add-user');
     }
 
-    calculateUser(id){
+    calculateUser(id) {
         window.localStorage.setItem("userId", id);
         this.props.history.push('/calculate-user');
     }
 
+
     render() {
-        return(
-            <div>
-                <h2 className="text-center">User Details</h2>
-                <table className="table table-striped">
-                    <thead>
+        return (
+
+            <div className="list-user">
+
+
+
+
+                    <h2 className="text-center">User Details</h2>
+                    <table className="table table-striped">
+                        <thead>
                         <tr>
                             <th className="hidden">Id</th>
                             <th>Name</th>
@@ -66,11 +75,11 @@ class ListUser extends Component{
                             <th>Age</th>
                             <th>Desired weight</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         {
                             this.state.users.map(
-                        user =>
+                                user =>
                                     <tr key={user.id}>
                                         <td>{user.id}</td>
                                         <td>{user.fname}</td>
@@ -81,19 +90,24 @@ class ListUser extends Component{
                                         <td>{user.age}</td>
                                         <td>{user.desired_weight}</td>
                                         <td>
-                                            <button className="btn btn-success" onClick={() => this.deleteUser(user.id)}>Delete</button>
-                                            <button className="btn btn-success" onClick={() => this.editUser(user.id)}>Edit</button>
-                                            <button onClick={() => this.calculateUser(user.id)}>Calculate</button>
+                                            <button className="btn btn-success"
+                                                    onClick={() => this.deleteUser(user.id)}>Delete
+                                            </button>
+                                            <button className="btn btn-success"
+                                                    onClick={() => this.editUser(user.id)}>Edit
+                                            </button>
+                                            <button className="btn btn-success" onClick={() => this.calculateUser(user.id)}>Calculate</button>
                                         </td>
                                     </tr>
                             )
                         }
-                    </tbody>
+                        </tbody>
 
-                </table>
+                    </table>
 
-                <button className="btn btn-danger" onClick={() => this.addUser()}> Add User</button>
-            </div>
+                    <button className="btn btn-danger" onClick={() => this.addUser()}> Add User</button>
+                </div>
+
         );
     }
 
